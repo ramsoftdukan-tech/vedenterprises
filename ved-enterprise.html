@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ved Enterprise | Dhank, Rajkot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --orange: #15803D;
+      --orange-light: #F0FDF4;
+      --orange-mid: #4ADE80;
+      --deep: #1C1917;
+      --mid: #44403C;
+      --muted: #78716C;
+      --border: #E7E5E4;
+      --white: #FFFFFF;
+      --bg: #FAFAF8;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Nunito', sans-serif; color: var(--deep); background: var(--white); }
+    a { text-decoration: none; color: inherit; }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 6%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .nav-logo { font-family: 'Libre Baskerville', serif; font-size: 1rem; font-weight: 700; color: var(--deep); line-height: 1.2; }
+    .nav-logo span { color: var(--orange); display: block; font-size: 0.72rem; font-weight: 400; font-style: italic; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.85rem; font-weight: 700; color: var(--mid); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--orange); }
+    .btn-nav {
+      background: var(--orange); color: var(--white);
+      padding: 0.46rem 1.2rem; border-radius: 6px;
+      font-size: 0.83rem; font-weight: 800;
+      transition: opacity 0.2s;
+    }
+    .btn-nav:hover { opacity: 0.88; }
+
+    /* HERO */
+    #hero {
+      background: var(--white);
+      padding: 5rem 6% 4rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--orange-light);
+      color: var(--orange);
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+      padding: 0.3rem 0.9rem; border-radius: 20px; margin-bottom: 1.4rem;
+      border: 1px solid #86EFAC;
+    }
+    #hero h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700; line-height: 1.15; letter-spacing: -0.5px;
+      margin-bottom: 1.1rem; color: var(--deep);
+    }
+    #hero h1 em { font-style: italic; color: var(--orange); }
+    #hero p { color: var(--muted); font-size: 0.97rem; line-height: 1.8; max-width: 440px; margin-bottom: 2rem; }
+    .hero-btns { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--orange); color: var(--white);
+      padding: 0.7rem 1.6rem; border-radius: 7px;
+      font-size: 0.9rem; font-weight: 800;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+    .btn-outline {
+      border: 2px solid var(--border); color: var(--mid);
+      padding: 0.7rem 1.6rem; border-radius: 7px;
+      font-size: 0.9rem; font-weight: 700;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+    /* HERO VISUAL */
+    .hero-visual {
+      background: var(--orange-light);
+      border-radius: 20px;
+      border: 1px solid #86EFAC;
+      padding: 2.5rem;
+      display: flex; flex-direction: column; gap: 1.2rem;
+    }
+    .hero-stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .hero-stat {
+      background: var(--white); border-radius: 12px; padding: 1.2rem 1rem;
+      border: 1px solid var(--border); text-align: center;
+    }
+    .hero-stat-num { font-family: 'Libre Baskerville', serif; font-size: 1.8rem; font-weight: 700; color: var(--orange); }
+    .hero-stat-label { font-size: 0.75rem; color: var(--muted); font-weight: 600; margin-top: 0.1rem; }
+    .hero-tag-row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .h-tag {
+      background: var(--white); border: 1px solid var(--border); border-radius: 20px;
+      padding: 0.3rem 0.8rem; font-size: 0.77rem; font-weight: 700; color: var(--mid);
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--orange);
+      display: flex; flex-wrap: wrap;
+    }
+    .stat {
+      flex: 1; min-width: 130px;
+      padding: 1.3rem 1rem; text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.2);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-family: 'Libre Baskerville', serif; font-size: 1.6rem; font-weight: 700; color: var(--white); }
+    .stat-label { font-size: 0.73rem; color: rgba(255,255,255,0.75); font-weight: 600; }
+
+    /* SECTIONS */
+    section { padding: 4.5rem 6%; }
+    .section-label { font-size: 0.68rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
+    .section-title { font-family: 'Libre Baskerville', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; margin-bottom: 0.5rem; line-height: 1.2; }
+    .section-sub { color: var(--muted); font-size: 0.9rem; max-width: 480px; margin-bottom: 2.5rem; line-height: 1.8; }
+
+    /* SERVICES */
+    #services { background: var(--bg); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
+    .service-card {
+      background: var(--white); border-radius: 14px; padding: 1.8rem 1.5rem;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.25s, transform 0.2s;
+    }
+    .service-card:hover { box-shadow: 0 6px 24px rgba(234,88,12,0.1); transform: translateY(-3px); }
+    .s-icon { width: 46px; height: 46px; background: var(--orange-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1rem; }
+    .service-card h3 { font-size: 0.97rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .service-card p { font-size: 0.84rem; color: var(--muted); line-height: 1.65; }
+
+    /* ABOUT */
+    #about { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .about-left > p { color: var(--muted); font-size: 0.92rem; line-height: 1.8; margin-bottom: 1.5rem; }
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 1.5rem; }
+    .check-list li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem; font-weight: 600; }
+    .check-list li::before { content: '✓'; color: var(--orange); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+    .biz-card {
+      background: var(--white); border-radius: 16px; padding: 2rem;
+      border: 1.5px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    .biz-card-title { font-size: 0.65rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; }
+    .biz-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 0.8rem 0; border-bottom: 1px solid var(--border); gap: 1rem; }
+    .biz-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .biz-key { font-size: 0.76rem; font-weight: 700; color: var(--muted); flex-shrink: 0; }
+    .biz-val { font-size: 0.84rem; font-weight: 700; color: var(--deep); text-align: right; }
+    .biz-badge {
+      display: inline-block; background: var(--orange-light); color: var(--orange);
+      border: 1px solid #86EFAC; border-radius: 4px;
+      padding: 0.1rem 0.55rem; font-size: 0.76rem; font-weight: 700;
+    }
+    .msme-seal {
+      margin-top: 1.3rem; padding: 0.8rem; background: var(--orange-light);
+      border: 1px solid #86EFAC; border-radius: 8px;
+      font-size: 0.82rem; font-weight: 700; color: var(--orange); text-align: center;
+    }
+
+    /* CONTACT */
+    #contact { background: var(--bg); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .contact-items { display: flex; flex-direction: column; gap: 1.3rem; }
+    .contact-item { display: flex; align-items: flex-start; gap: 1rem; }
+    .c-icon { width: 46px; height: 46px; background: var(--orange-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; border: 1px solid #86EFAC; }
+    .c-key { font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
+    .c-val { font-size: 0.92rem; font-weight: 700; color: var(--deep); line-height: 1.6; }
+    .c-val a { color: var(--orange); }
+    .map-box {
+      background: var(--white); border-radius: 14px; padding: 1.8rem;
+      border: 1px solid var(--border);
+    }
+    .map-box h3 { font-family: 'Libre Baskerville', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .map-box p { color: var(--muted); font-size: 0.88rem; line-height: 1.75; }
+    .map-icon { font-size: 2rem; margin-bottom: 0.6rem; display: block; }
+
+    footer { background: var(--deep); color: #78716C; padding: 2.5rem 6% 1.3rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    .footer-logo { font-family: 'Libre Baskerville', serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
+    .footer-logo span { color: var(--orange-mid); font-style: italic; }
+    .footer-brand p { font-size: 0.8rem; line-height: 1.7; max-width: 240px; }
+    .footer-col h5 { font-size: 0.67rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--white); margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-col ul li a { font-size: 0.8rem; color: #78716C; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--orange-mid); }
+    .footer-bottom { border-top: 1px solid #292524; padding-top: 1.2rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+    .footer-bottom p { font-size: 0.76rem; color: #44403C; }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (max-width: 860px) { #hero, .about-grid, .contact-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr 1fr; } .nav-links { display: none; } }
+    @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } .stats-bar { flex-direction: column; } .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-logo">Ved Enterprise<span>Dhank, Rajkot · Gujarat</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">Products</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn-nav">Get a Quote</a>
+  </nav>
+
+  <section id="hero">
+    <div>
+      <div class="hero-eyebrow">🚜 Agricultural Machinery & Equipment Trading · Est. 2024</div>
+      <h1>Reliable Supply of <em>Agricultural Equipment</em></h1>
+      <p>Wholesale trading of agricultural machinery, pumps, and equipment based in Dhank, Rajkot — supplying quality farm equipment with prompt, trustworthy service.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Our Products</a>
+        <a href="#about" class="btn-outline">About Us</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-stat-row">
+        <div class="hero-stat">
+          <div class="hero-stat-num">2024</div>
+          <div class="hero-stat-label">Established</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">Trading</div>
+          <div class="hero-stat-label">Major Activity</div>
+        </div>
+      </div>
+      <div class="hero-stat-row">
+        <div class="hero-stat">
+          <div class="hero-stat-num">MSME</div>
+          <div class="hero-stat-label">Registered</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">Micro</div>
+          <div class="hero-stat-label">Enterprise</div>
+        </div>
+      </div>
+      <div class="hero-tag-row">
+        <span class="h-tag">🚜 Farm Equipment</span>
+        <span class="h-tag">⚙️ Machinery</span>
+        <span class="h-tag">🔧 Supplies</span>
+        <span class="h-tag">📦 Wholesale</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-num">Rajkot</div><div class="stat-label">District, Gujarat</div></div>
+    <div class="stat"><div class="stat-num">360470</div><div class="stat-label">PIN Code</div></div>
+    <div class="stat"><div class="stat-num">MSME</div><div class="stat-label">Govt. Registered</div></div>
+    <div class="stat"><div class="stat-num">NIC 46539</div><div class="stat-label">Agri. Machinery Trade</div></div>
+  </div>
+
+  <section id="services">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">Our Products</h2>
+    <p class="section-sub">Wholesale supply of quality agricultural machinery and equipment to support farmers and dealers.</p>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="s-icon">🚜</div>
+        <h3>Agricultural Machinery</h3>
+        <p>Wholesale supply of farm machinery and equipment built for durability and field performance.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="s-icon">⚙️</div>
+        <h3>Pumps & Motors</h3>
+        <p>Reliable submersible pumps, motors, and tubewell equipment for irrigation and water supply needs.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="s-icon">🔧</div>
+        <h3>Spare Parts & Fittings</h3>
+        <p>Genuine spares, pipes, and fittings to keep agricultural equipment running smoothly.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="s-icon">📦</div>
+        <h3>Bulk & Dealer Supply</h3>
+        <p>Wholesale and dealer-level supply with competitive pricing and dependable delivery.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-left reveal">
+        <div class="section-label">About Us</div>
+        <h2 class="section-title">Trusted Agricultural Equipment Trading in Rajkot</h2>
+        <p>Ved Enterprise is a wholesale trading business based in Dhank, Rajkot, dealing in agricultural machinery, equipment, and supplies. We are committed to providing reliable products and prompt service to farmers and dealers across the region.</p>
+        <ul class="check-list">
+          <li>Wholesale trading of agricultural machinery & equipment</li>
+          <li>Reliable sourcing and competitive pricing</li>
+          <li>Serving farmers and dealers across Rajkot district</li>
+          <li>Established July 2024</li>
+          <li>Registered Micro Enterprise under MSME, Govt. of India</li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <div class="biz-card">
+          <div class="biz-card-title">Business Details</div>
+          <div class="biz-row"><div class="biz-key">Enterprise</div><div class="biz-val">Ved Enterprise</div></div>
+          <div class="biz-row"><div class="biz-key">Type</div><div class="biz-val"><span class="biz-badge">Micro Enterprise</span></div></div>
+          <div class="biz-row"><div class="biz-key">Udyam No.</div><div class="biz-val">UDYAM-GJ-20-0239896</div></div>
+          <div class="biz-row"><div class="biz-key">Established</div><div class="biz-val">23 Jul 2024</div></div>
+          <div class="biz-row"><div class="biz-key">Location</div><div class="biz-val">Dhank, Rajkot, GJ — 360470</div></div>
+          <div class="biz-row"><div class="biz-key">Activity</div><div class="biz-val">Agri. Machinery Trading (NIC 46539)</div></div>
+          <div class="msme-seal">🏛️ MSME Certified · Govt. of India</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title">Contact Us</h2>
+    <p class="section-sub">Looking to place an order or enquire about our products? We're happy to help.</p>
+    <div class="contact-grid">
+      <div class="contact-items">
+        <div class="contact-item reveal">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-key">Mobile</div>
+            <div class="c-val"><a href="tel:+917600135846">+91 76001 35846</a></div>
+          </div>
+        </div>
+        <div class="contact-item reveal">
+          <div class="c-icon">✉️</div>
+          <div>
+            <div class="c-key">Email</div>
+            <div class="c-val"><a href="mailto:Sutariyapunit31@gmail.com">Sutariyapunit31@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item reveal">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-key">Address</div>
+            <div class="c-val">House No. 1519, Hanuman Society,<br>R.S No. 280/1, Plot No. 29 & 30,<br>Dhank, Rajkot, Gujarat — 360470</div>
+          </div>
+        </div>
+        <div class="contact-item reveal">
+          <div class="c-icon">🏛️</div>
+          <div>
+            <div class="c-key">MSME Reg. No.</div>
+            <div class="c-val">UDYAM-GJ-20-0239896</div>
+          </div>
+        </div>
+      </div>
+      <div class="map-box reveal">
+        <span class="map-icon">📍</span>
+        <h3>Dhank, Rajkot</h3>
+        <p>Located at Hanuman Society, Plot No. 29 & 30, Dhank — easily accessible to farmers and dealers across Rajkot district.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Ved <span>Enterprise</span></div>
+        <p>Trusted wholesale trading of agricultural machinery & equipment in Dhank, Rajkot since 2024.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#services">Products</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Details</h5>
+        <ul>
+          <li><a href="#">UDYAM-GJ-20-0239896</a></li>
+          <li><a href="#">Rajkot, Gujarat</a></li>
+          <li><a href="#">Est. 2024</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Ved Enterprise. All rights reserved.</p>
+      <p>MSME Registered Micro Enterprise</p>
+    </div>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 90); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(r => io.observe(r));
+  </script>
+</body>
+</html>
